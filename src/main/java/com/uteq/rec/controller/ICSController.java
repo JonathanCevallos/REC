@@ -22,8 +22,8 @@ public class ICSController {
     @GetMapping("")
     public String findAll(Model model) {
         try {
-            List<ICS> Proyectos = this.iCSService.findAll();
-            model.addAttribute("iCS", Proyectos);
+            List<ICS> iCS = this.iCSService.findAll();
+            model.addAttribute("iCS", iCS);
             return "views/ICS";
         } catch (Exception e) {
             String err = "Ocurrio un error: " + e.getMessage();

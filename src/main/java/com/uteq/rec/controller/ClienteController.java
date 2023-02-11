@@ -1,30 +1,30 @@
 package com.uteq.rec.controller;
 
-import com.uteq.rec.entity.Proyecto;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import com.uteq.rec.service.ProyectoService;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.List;
+import com.uteq.rec.entity.Cliente;
+import com.uteq.rec.service.ClienteService;
 
 @Controller
 @CrossOrigin("*")
-public class ProyectoController {
-
-    @Autowired
-    ProyectoService ProyectoService;
+public class ClienteController {
+	@Autowired
+	ClienteService clienteService;
 
     @GetMapping("")
     public String findAll(Model model) {
         try {
-            List<Proyecto> Proyectos = this.ProyectoService.findAll();
-            model.addAttribute("Proyectos", Proyectos);
-            return "views/Proyectos_JAO";
+            List<Cliente> cliente = this.clienteService.findAll();
+            model.addAttribute("clientes", cliente);
+            return "views/cliente";
         } catch (Exception e) {
             String err = "Ocurrio un error: " + e.getMessage();
             model.addAttribute("error", err);
@@ -33,9 +33,9 @@ public class ProyectoController {
     }
 
     @PostMapping("/save")
-    public String guardarProyecto(@ModelAttribute("Proyecto") Proyecto Proyecto) {
+    public String guardarCliente(@ModelAttribute("cliente") Cliente cliente) {
         try {
-            ProyectoService.save(Proyecto);
+        	clienteService.save(cliente);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -43,11 +43,10 @@ public class ProyectoController {
     }
 
     @GetMapping({"/new"})
-    public String newProyecto(Model model) throws Exception {
-        model.addAttribute("Proyectos", ProyectoService.findAll());
-        Proyecto Proyecto = new Proyecto();
-        model.addAttribute("Proyecto", Proyecto);
-        return "views/nuevo_Proyecto_LSB";
+    public String newCliente(Model model) throws Exception {
+        model.addAttribute("clientes", clienteService.findAll());
+        Cliente cliente = new Cliente();
+        model.addAttribute("cliente", cliente);
+        return "views/nuevo_cliente";
     }
-    
 }

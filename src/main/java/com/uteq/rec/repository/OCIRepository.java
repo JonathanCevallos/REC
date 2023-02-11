@@ -2,8 +2,9 @@ package com.uteq.rec.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import com.uteq.rec.entity.Proyecto;
+import com.uteq.rec.entity.OCI;
 
 @Repository
-public interface ProyectoRepository extends JpaRepository<Proyecto, Integer> {
+public interface OCIRepository extends JpaRepository<OCI, Integer>{
+
 }

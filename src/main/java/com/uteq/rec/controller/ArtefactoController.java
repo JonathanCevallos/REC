@@ -1,30 +1,30 @@
 package com.uteq.rec.controller;
 
-import com.uteq.rec.entity.Proyecto;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import com.uteq.rec.service.ProyectoService;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.List;
+import com.uteq.rec.entity.Artefacto;
+import com.uteq.rec.service.ArtefactoService;
 
 @Controller
 @CrossOrigin("*")
-public class ProyectoController {
-
-    @Autowired
-    ProyectoService ProyectoService;
+public class ArtefactoController {
+	@Autowired
+	ArtefactoService artefactoService;
 
     @GetMapping("")
     public String findAll(Model model) {
         try {
-            List<Proyecto> Proyectos = this.ProyectoService.findAll();
-            model.addAttribute("Proyectos", Proyectos);
-            return "views/Proyectos_JAO";
+            List<Artefacto> artefactos = this.artefactoService.findAll();
+            model.addAttribute("artefactos", artefactos);
+            return "views/artefactos";
         } catch (Exception e) {
             String err = "Ocurrio un error: " + e.getMessage();
             model.addAttribute("error", err);
@@ -33,9 +33,9 @@ public class ProyectoController {
     }
 
     @PostMapping("/save")
-    public String guardarProyecto(@ModelAttribute("Proyecto") Proyecto Proyecto) {
+    public String guardarArtefacto(@ModelAttribute("artefacto") Artefacto artefacto) {
         try {
-            ProyectoService.save(Proyecto);
+        	artefactoService.save(artefacto);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -43,11 +43,10 @@ public class ProyectoController {
     }
 
     @GetMapping({"/new"})
-    public String newProyecto(Model model) throws Exception {
-        model.addAttribute("Proyectos", ProyectoService.findAll());
-        Proyecto Proyecto = new Proyecto();
-        model.addAttribute("Proyecto", Proyecto);
-        return "views/nuevo_Proyecto_LSB";
+    public String newArtefacto(Model model) throws Exception {
+        model.addAttribute("artefactos", artefactoService.findAll());
+        Artefacto artefacto = new Artefacto();
+        model.addAttribute("artefacto", artefacto);
+        return "views/nuevo_artefacto";
     }
-    
 }

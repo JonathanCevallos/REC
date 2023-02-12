@@ -9,12 +9,14 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.uteq.rec.entity.OCI;
 import com.uteq.rec.service.OCIService;
 
 @Controller
 @CrossOrigin("*")
+@RequestMapping("OCI")
 public class OCIController {
 	 @Autowired
 	 OCIService oCIService;

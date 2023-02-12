@@ -9,12 +9,14 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.uteq.rec.entity.PeticionCambio;
 import com.uteq.rec.service.PeticionCambioService;
 
 @Controller
 @CrossOrigin("*")
+@RequestMapping("peticioncambios")
 public class PeticionCambioController {
 	@Autowired
 	PeticionCambioService peticionCambioService;

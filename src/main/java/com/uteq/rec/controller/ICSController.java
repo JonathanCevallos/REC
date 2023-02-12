@@ -9,12 +9,14 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.uteq.rec.entity.ICS;
 import com.uteq.rec.service.ICSService;
 
 @Controller
 @CrossOrigin("*")
+@RequestMapping("ICS")
 public class ICSController {
 	@Autowired
 	ICSService iCSService;

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:insert="fragments/base::css"></div>
+    <title>Cliente</title>
+</head>
+<body>
+<div class="container mt-5">
+    <nav class="navbar navbar-dark bg-primary">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1 text-center">NUEVO CLIENTE</span>
+        </div>
+    </nav>
+    <form th:action="@{/cliente}" th:object="${cliente}" method="post">
+        <div class="form-group mt-3">
+            <label for="nombre">Nombre</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" th:field="*{nombre}"/>
+        </div>
+        <div class="form-group mt-2">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email" th:field="*{email}"/>
+        </div>
+        <div class="form-group mt-2">
+            <label for="telefono">Telefono</label>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <select class="form-control" id="codigo_pais" name="codigo_pais">
+                        <option>+53-Ec</option>
+                        <option>+53-Ar</option>
+                        <option>+55-Br</option>
+                        <option>+56-Ch</option>
+                    </select>
+                </div>
+                <input type="tel" class="form-control" id="telefono" name="telefono" th:field="*{telefono}"/>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3" >Guardar</button>
+    </form>
+</div>
+<div th:insert="fragments/base::js"></div>
+</body>
+</html>

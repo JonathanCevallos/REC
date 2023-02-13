@@ -49,6 +49,6 @@ public class ClienteController {
         model.addAttribute("clientes", clienteService.findAll());
         Cliente cliente = new Cliente();
         model.addAttribute("cliente", cliente);
-        return "views/nuevo_cliente";
+        return "views/cliente";
     }
 }

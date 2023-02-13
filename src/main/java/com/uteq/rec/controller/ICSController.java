@@ -16,7 +16,7 @@ import com.uteq.rec.service.ICSService;
 
 @Controller
 @CrossOrigin("*")
-@RequestMapping("ICS")
+@RequestMapping("ics")
 public class ICSController {
 	@Autowired
 	ICSService iCSService;
@@ -46,9 +46,9 @@ public class ICSController {
 
     @GetMapping({"/new"})
     public String newICS(Model model) throws Exception {
-        model.addAttribute("iCS", iCSService.findAll());
-        ICS iCS = new ICS();
-        model.addAttribute("iCS", iCS);
-        return "views/nuevo_ICS";
+        model.addAttribute("icsAll", iCSService.findAll());
+        ICS ics = new ICS();
+        model.addAttribute("ics", ics);
+        return "views/ICS";
     }
 }

@@ -1,10 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Index</title>
+
+    <div th:replace="fragments/base :: css"></div>
 </head>
 <body>
 <h1>Soy el Index</h1>
+
+<div th:replace="fragments/base :: footer"></div>
+    <div th:replace="fragments/base :: js"></div>
 </body>
 </html>

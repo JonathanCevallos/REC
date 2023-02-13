@@ -46,9 +46,9 @@ public class PeticionCambioController {
 
     @GetMapping({"/new"})
     public String newPeticionCambio(Model model) throws Exception {
-        model.addAttribute("Proyectos", peticionCambioService.findAll());
+        model.addAttribute("peticioncambios", peticionCambioService.findAll());
         PeticionCambio peticionCambio = new PeticionCambio();
-        model.addAttribute("peticionCambio", peticionCambio);
-        return "views/nuevo_peticioncambio";
+        model.addAttribute("peticioncambio", peticionCambio);
+        return "views/peticionCambio";
     }
 }

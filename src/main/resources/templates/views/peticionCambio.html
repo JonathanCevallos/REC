@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+          integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <title>Petición de Cambio</title>
+</head>
+<body>
+<div class="container mt-5">
+    <nav class="navbar navbar-dark bg-primary">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1 text-center">NUEVA PETICIÓN DE CAMBIO</span>
+        </div>
+    </nav>
+    <form th:action="@{/peticioncambios/save}" method="post" th:object="${peticioncambio}">
+        <input type="hidden" th:field="*{id}"/>
+        <div class="form-group mt-3">
+            <label for="descripcionCambio">Descripción del Cambio</label>
+            <textarea class="form-control" id="descripcionCambio" th:field="*{descripcionCambio}" rows="3"></textarea>
+        </div>
+        <div class="form-group mt-2">
+            <label for="propositoCmbio">Propósito del Cambio</label>
+            <textarea class="form-control" id="propositoCmbio" th:field="*{propositoCmbio}" rows="3"></textarea>
+        </div>
+        <div class="form-group mt-2">
+            <label for="justificacionCambio">Justificación del Cambio</label>
+            <textarea class="form-control" id="justificacionCambio" th:field="*{justificacionCambio}"
+                      rows="3"></textarea>
+        </div>
+        <div class="form-group mt-2">
+            <label for="observaciones">Observaciones</label>
+            <textarea class="form-control" id="observaciones" th:field="*{observaciones}" rows="3"></textarea>
+        </div>
+        <div class="form-group mt-2">
+            <label for="prioridad">Prioridad</label>
+            <input type="text" class="form-control" id="prioridad" th:field="*{prioridad}"/>
+
+<!--            <select class="form-select" id="prioridad" aria-label="Default select example" th:field="*{prioridad}">-->
+<!--                <option selected>Seleccione una opcion</option>-->
+<!--                <option value="1">Alta</option>-->
+<!--                <option value="2">Media</option>-->
+<!--                <option value="3">Baja</option>-->
+<!--            </select>-->
+        </div>
+        <div class="form-group mt-2">
+            <label for="resultadosPrevistos">Resultados Previstos</label>
+            <textarea class="form-control" id="resultadosPrevistos" th:field="*{resultadosPrevistos}"
+                      rows="3"></textarea>
+        </div>
+
+        <div class="form-group mt-2">
+            <label for="proyecto">Proyecto</label>
+            <select class="form-control" id="proyecto" th:field="*{proyecto}">
+                <option th:each="proyecto : ${proyectos}" th:value="${proyecto.id}"
+                        th:text="${proyecto.nombre}"></option>
+            </select>
+        </div>
+        <div class="form-group mt-2">
+            <label for="artefactos">Artefactos</label>
+            <select multiple class="form-control" id="artefactos" th:field="*{artefactos}">
+                <option th:each="artefacto : ${artefactos}" th:value="${artefacto.id}"
+                        th:text="${artefacto.nombre}"></option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Guardar</button>
+    </form>
+</div>
+</body>
+</html>
+

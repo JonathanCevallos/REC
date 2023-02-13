@@ -2,6 +2,8 @@ package com.uteq.rec.controller;
 
 import java.util.List;
 
+import com.uteq.rec.service.ArtefactoService;
+import com.uteq.rec.service.ProyectoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +22,11 @@ import com.uteq.rec.service.PeticionCambioService;
 public class PeticionCambioController {
 	@Autowired
 	PeticionCambioService peticionCambioService;
+
+    @Autowired
+    ProyectoService proyectoService;
+    @Autowired
+    ArtefactoService artefactoService;
 
     @GetMapping("")
     public String findAll(Model model) {
@@ -47,7 +54,11 @@ public class PeticionCambioController {
     @GetMapping({"/new"})
     public String newPeticionCambio(Model model) throws Exception {
         model.addAttribute("peticioncambios", peticionCambioService.findAll());
+
+        model.addAttribute("proyectos", proyectoService.findAll());
+        model.addAttribute("artefactos", artefactoService.findAll());
         PeticionCambio peticionCambio = new PeticionCambio();
+
         model.addAttribute("peticioncambio", peticionCambio);
         return "views/peticionCambio";
     }

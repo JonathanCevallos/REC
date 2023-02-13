@@ -45,6 +45,6 @@ public class ParticipanteController {
         model.addAttribute("participantes", participanteService.findAll());
         Participante participante = new Participante();
         model.addAttribute("participante", participante);
-        return "views/nuevo_participante";
+        return "views/participante";
     }
 }

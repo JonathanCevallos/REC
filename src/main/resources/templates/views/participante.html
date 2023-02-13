@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:insert="fragments/base::css"></div>
+    <title>Participante</title>
+</head>
+<body>
+<div class="container mt-5">
+    <nav class="navbar navbar-dark bg-primary">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1 text-center">NUEVO PARTICIPANTE</span>
+        </div>
+    </nav>
+    <form th:action="@{/participantes/save}" th:object="${participante}" method="post">
+        <div class="form-group mt-3">
+            <label for="nombre">Nombre</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" th:field="*{nombre}"/>
+        </div>
+        <div class="form-group mt-2">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email" th:field="*{email}"/>
+        </div>
+        <div class="form-group mt-2">
+            <label for="rol">Rol</label>
+            <select class="form-control" id="rol" name="rol" th:field="*{rol}">
+                <option   th:value="${nombre}">Desarrollador</option>
+                <option   th:value="${nombre}">Tester</option>
+                <option th:value="${nombre}">Scrum Master</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Guardar</button>
+    </form>
+</div>
+<div th:insert="fragments/base::js"></div>
+</body>
+</html>

@@ -11,7 +11,7 @@
             <span class="navbar-brand mb-0 h1 text-center">NUEVO CLIENTE</span>
         </div>
     </nav>
-    <form th:action="@{/cliente}" th:object="${cliente}" method="post">
+    <form th:action="@{/clientes/save}" th:object="${cliente}" method="post">
         <div class="form-group mt-3">
             <label for="nombre">Nombre</label>
             <input type="text" class="form-control" id="nombre" name="nombre" th:field="*{nombre}"/>
@@ -25,17 +25,43 @@
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <select class="form-control" id="codigo_pais" name="codigo_pais">
-                        <option>+53-Ec</option>
-                        <option>+53-Ar</option>
-                        <option>+55-Br</option>
-                        <option>+56-Ch</option>
+                        <option>+53 Ec</option>
+                        <option>+53 Ar</option>
+                        <option>+55 Br</option>
+                        <option>+56 Ch</option>
                     </select>
                 </div>
-                <input type="tel" class="form-control" id="telefono" name="telefono" th:field="*{telefono}"/>
+                <input type="tel" class="form-control" id="telefono" size="9" name="telefono"  th:field="*{telefono}"/>
             </div>
         </div>
         <button type="submit" class="btn btn-primary mt-3" >Guardar</button>
     </form>
+
+<!--    <table class="table mt-5">-->
+<!--        <thead class="thead-dark table-dark">-->
+<!--        <tr>-->
+<!--            <th scope="col">#</th>-->
+<!--            <th scope="col">Nombre</th>-->
+<!--            <th scope="col">Email</th>-->
+<!--            <th scope="col">Telefono</th>-->
+<!--            <th scope="col">Acciones</th>-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--        <tr th:each="cliente : ${clientes}">-->
+<!--            <th scope="row" th:text="${cliente.id}"></th>-->
+<!--            <td th:text="${cliente.nombre}"></td>-->
+<!--            <td th:text="${cliente.email}"></td>-->
+<!--            <td th:text="${cliente.telefono}"></td>-->
+<!--            <td>-->
+<!--&lt;!&ndash;                <a class="btn btn-primary" th:href="@{/clientes/update/{id}(id=${cliente.id})}">Editar</a>&ndash;&gt;-->
+<!--                <a class="btn btn-primary"  href="#" >Editar</a>-->
+<!--                <a class="btn btn-danger"  href="#" >Eliminar</a>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--        </tbody>-->
+<!--    </table>-->
+
 </div>
 <div th:insert="fragments/base::js"></div>
 </body>

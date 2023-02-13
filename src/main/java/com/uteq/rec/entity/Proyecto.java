@@ -7,6 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -22,8 +23,11 @@ public class Proyecto {
 
     //prodcut Owner
     @ManyToOne
-    @JoinColumn(name = "id_administrador_cambios", nullable = false)
-    private Participante participante;
+    @JoinColumn(name = "id_product_owner", nullable = false)
+    private ProductOwner productOwner;
+
+    @OneToMany
+    private List<Participante> participantes;
 
     @ManyToOne
     @JoinColumn(name = "id_cliente", nullable = false)
